@@ -1,0 +1,56 @@
+// ==UserScript==
+// @name         Block Noscript & Frames
+// @namespace    http://github.com/troysjanda/
+// @version      1.1b
+// @updateURL    https://github.com/troysjanda/
+// @downloadURL  https://github.com/troysjanda/
+// @description  Removes noscript, frame, frameset, and iframe tags from all pages
+// @author       Troy Janda
+// @match        *://*/*
+// @run-at       document-start
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    // Add any sites you want to exclude from blocking
+    const EXCEPTED_SITES = [
+        'youtube.com',
+        'yahoo.com',
+    ];
+
+    const BLOCKED_TAGS = ['noscript', 'frame', 'frameset', 'iframe'];
+
+    function isExcepted() {
+        return EXCEPTED_SITES.some(site => location.hostname === site || location.hostname.endsWith('.' + site));
+    }
+
+    if (isExcepted()) return;
+
+    function removeBlockedTags(root = document) {
+        BLOCKED_TAGS.forEach(tag => {
+            root.querySelectorAll?.(tag).forEach(el => el.remove());
+        });
+    }
+
+    function isBlocked(node) {
+        return node.nodeType === Node.ELEMENT_NODE && BLOCKED_TAGS.includes(node.tagName.toLowerCase());
+    }
+
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(({ addedNodes }) => {
+            addedNodes.forEach(node => {
+                if (isBlocked(node)) {
+                    node.remove();
+                } else {
+                    removeBlockedTags(node);
+                }
+            });
+        });
+    });
+
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+
+    removeBlockedTags();
+})();
