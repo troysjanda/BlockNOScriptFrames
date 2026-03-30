@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Block Noscript & Frames
 // @namespace    https://raw.githubusercontent.com/troysjanda/BlockNOScriptFrames/refs/heads/main/BlockNoscriptFrames.txt
-// @version      1.1b
+// @version      1.0.1
 // @updateURL    https://github.com/troysjanda/https://raw.githubusercontent.com/troysjanda/BlockNOScriptFrames/refs/heads/main/BlockNoscriptFrames.txt
 // @downloadURL  https://raw.githubusercontent.com/troysjanda/BlockNOScriptFrames/refs/heads/main/BlockNoscriptFrames.txt
 // @description  Removes noscript, frame, frameset, and iframe tags from all pages
