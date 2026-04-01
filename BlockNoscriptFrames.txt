@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Block Noscript & iFrames
 // @namespace    https://raw.githubusercontent.com/troysjanda/BlockNOScriptFrames/refs/heads/main/BlockNoscriptFrames.txt
-// @version      1.0.3
+// @version      1.0.4
 // @updateURL    https://raw.githubusercontent.com/troysjanda/BlockNOScriptFrames/refs/heads/main/BlockNoscriptFrames.txt
 // @downloadURL  https://raw.githubusercontent.com/troysjanda/BlockNOScriptFrames/refs/heads/main/BlockNoscriptFrames.txt
 // @description  Removes noscript, frame, frameset, and iframe tags from all pages
@@ -18,6 +18,9 @@
     const EXCEPTED_SITES = [
         'youtube.com',
         'yahoo.com',
+        'github.com',
+        'x.com',
+        'twitch.com',
     ];
 
     const BLOCKED_TAGS = ['noscript', 'frame', 'frameset', 'iframe'];
